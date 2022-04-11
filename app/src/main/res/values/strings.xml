@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">theatre-movies-pagination</string>
+    <string name="top_movies">Top Movies</string>
 </resources>
