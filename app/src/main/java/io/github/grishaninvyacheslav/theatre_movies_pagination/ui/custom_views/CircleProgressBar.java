@@ -24,7 +24,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
@@ -80,7 +79,6 @@ public class CircleProgressBar extends View {
 
     public void setProgress(float progress) {
         this.progress = progress;
-        Log.d("[BUG]", "setProgress convertProgressToColor:" + progress);
         currColor = convertProgressToColor(progress);
         foregroundPaint.setColor(currColor);
         invalidate();
@@ -124,7 +122,6 @@ public class CircleProgressBar extends View {
         try {
             strokeWidth = typedArray.getDimension(R.styleable.CircleProgressBar_progressBarThickness, strokeWidth);
             progress = typedArray.getFloat(R.styleable.CircleProgressBar_progress, progress);
-            Log.d("[BUG]", "init convertProgressToColor:" + progress);
             currColor = convertProgressToColor(progress);
             min = typedArray.getInt(R.styleable.CircleProgressBar_min, min);
             max = typedArray.getInt(R.styleable.CircleProgressBar_max, max);
@@ -144,8 +141,6 @@ public class CircleProgressBar extends View {
     }
 
     private int convertProgressToColor(float progress) {
-        Log.d("[BUG]", "convertProgressToColor progress: " + progress);
-        Log.d("[BUG]", "convertProgressToColor ratio: " + (progress - min) / (max - min));
         return ColorUtils.blendARGB(startColor, endColor, (progress - min) / (max - min));
     }
 
